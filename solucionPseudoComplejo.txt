@@ -1,0 +1,56 @@
+    Inicio
+
+    precioInicio = 0
+    precio = 1
+    cantidad = 0
+    precioSuma = 0
+    cantidadSuma = 0
+    descuento = 0
+    descuentoTotal = 0
+    precioFinal = 0
+
+    Escribe "CAJA DE LA TIENDA"
+
+    Mientras (precio > 0) hacer
+        Escribe "Introduce el precio unitario en euros (0 para terminar):"
+        Lee precio
+
+        Escribe "Introduce el número de unidades:"
+        Lee cantidad
+
+        Mientras (cantidad <= 0) entonces
+            Escribe "La cantidad debe ser mayor que 0."
+            Escribe "Introduce el número de unidades:"
+            Lee cantidad
+
+        cantidadSuma = cantidadSuma + cantidad
+
+        Si (precioSuma == 0 and precio >= 0) entonces
+            precioSuma = precioInicio + (precio * cantidad)
+        Sino
+            Si (precio >= 0)
+                precioSuma = precioSuma + (precio * cantidad)
+
+    Si (cantidad > 0 and precio > 0)
+        Escribe "RESUMEN DE LA COMPRA"
+        
+        Escribe "Unidades compradas: " + cantidadSuma
+
+        Escribe "Importe antes del descuento: " + precioSuma + " euros"
+
+        Si (precioSuma >= 50) entonces
+            descuento = 5
+        Sino
+            Si (precioSuma >= 100) entonces
+                descuento = 10
+        Escribe "Descuento aplicado: " + descuento + " %"
+
+        descuentoTotal = precioSuma / descuento
+        Escribe "Descuento: " + descuentoTotal + " euros"
+
+        precioFinal = precioFinal - descuentoTotal
+        Escribe "Importe final: " + precioFinal + " euros"
+    Sino
+        Escribe "No se han registrado productos."
+
+Fin
